@@ -1,2 +1,505 @@
 # repositorio-1
 creacion de mi primer codigo html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MED-PREDICT CR - Inteligencia que salva respiros</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo-image {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.3;
+        }
+
+        .logo-title {
+            font-size: 18px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #0078b4 0%, #0096d6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-subtitle {
+            font-size: 11px;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header-nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .header-nav a:hover {
+            color: #0096d6;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .contact-btn, .language-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            color: #0096d6;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+
+        .contact-btn:hover, .language-btn:hover {
+            color: #005fa3;
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #0096d6;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f3ff 100%);
+            padding: 60px 50px;
+            text-align: left;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .search-container {
+            background: white;
+            border-radius: 50px;
+            padding: 15px 25px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 150, 214, 0.15);
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .search-field {
+            flex: 1;
+            min-width: 200px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .search-field::placeholder {
+            color: #999;
+        }
+
+        .search-divider {
+            width: 1px;
+            height: 30px;
+            background-color: #ddd;
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #0096d6 0%, #0078b4 100%);
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 96, 214, 0.3);
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid transparent;
+            position: relative;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 150, 214, 0.15);
+        }
+
+        .feature-number {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #0096d6 0%, #0078b4 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            margin: 0 auto 20px;
+        }
+
+        .feature-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+            color: #0096d6;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f3ff 100%);
+            padding: 60px 50px;
+            margin-top: 60px;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .testimonials-title {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .testimonial-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #0096d6;
+        }
+
+        .testimonial-text {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f3ff 100%);
+            padding: 80px 50px;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, #0096d6 0%, #0078b4 100%);
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 96, 214, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f5f5f5;
+            padding: 40px 50px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            .header-nav {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .logo-image {
+                height: 45px;
+            }
+
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .search-container {
+                flex-direction: column;
+            }
+
+            .search-field {
+                width: 100%;
+            }
+
+            .search-divider {
+                display: none;
+            }
+
+            .features {
+                padding: 0 20px;
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-container {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+            }
+
+            .cta-section {
+                padding: 40px 20px;
+            }
+
+            .cta-section h2 {
+                font-size: 22px;
+            }
+
+            footer {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <a href="#home" class="logo">
+                <img src="logo/WhatsApp Image 2026-06-04 at 10.14.21 PM.jpeg" alt="MED-PREDICT CR Logo" class="logo-image">
+                <div class="logo-text">
+                    <div class="logo-title">MED-PREDICT CR</div>
+                    <div class="logo-subtitle">Inteligencia que salva respiros</div>
+                </div>
+            </a>
+            <nav class="header-nav">
+                <a href="#home">¿Eres doctor?</a>
+                <a href="#home">¿Eres paciente?</a>
+                <a href="#about">Sobre nosotros</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="contact-btn">📞 +506 6332-9768</button>
+            <button class="language-btn">🌐 English</button>
+            <button class="menu-btn">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Encuentra tecnología médica</h1>
+            <div class="search-container">
+                <input type="text" class="search-field" placeholder="¿Que producto estas buscando?">
+                <div class="search-divider"></div>
+                <input type="text" class="search-field" placeholder="¿Tienda a la que desee retirar el producto?">
+                <button class="search-btn">BUSCAR</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-number">1</div>
+            <div class="feature-icon"><img src="logo/WhatsApp Image 2026-06-14 at 9.37.28 PM.jpeg" alt="Producto 1" class="logo-image"></div>
+            <h3>SensePatch</h3>
+            <p>Parche hipoalergenico desechable mide saturacion y ritmo cardíaco</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-number">2</div>
+            <div class="feature-icon"><img src="logo/WhatsApp Image 2026-06-14 at 9.37.28 PM (1).jpeg" alt="Producto 2" class="logo-image"></div>
+            <h3>Predict-Cloud</h3>
+            <p>Algoritmo de IA con alertas automáticas al celular del médico encargado.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-number">3</div>
+            <div class="feature-icon"><img src="logo/WhatsApp Image 2026-06-14 at 9.37.28 PM (2).jpeg" alt="Producto 3" class="logo-image"></div>
+            <h3>Kit Hospitalario</h3>
+            <p>Central de monitoreo inalámbrico para clínicas pequeñas.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <div>
+                <h2 class="testimonials-title">Opiniones de nuestros productos</h2>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"Gracias a los comentarios y recomendaciones de pacientes que utilizaron los productos de MED-PREDICT CR, me aseguro que el producto seleccionado será uno de los mejores."</p>
+                    <p class="testimonial-author">— Milagro F. Cartago, Costa Rica</p>
+                </div>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"MED-PREDICT CR me pareció excelente ya que permite conocer el producto al detalle desde antes y es bastante facil de usar. Permite obtener el producto en línea."</p>
+                    <p class="testimonial-author">— Roberto R. Alajuela, Costa Rica</p>
+                </div>
+            </div>
+            <div>
+                <img src="logo/WhatsApp Image 2026-06-04 at 10.14.21 PM.jpeg" alt="MED-PREDICT CR" style="border-radius: 15px; width: 100%;">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>¿Quieres ser parte de MED-PREDICT CR?</h2>
+            <p>Únete a nuestra plataforma y inicia tu futuro</p>
+            <button class="cta-btn">¡ÚNETE YA!</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 MED-PREDICT CR. Todos los derechos reservados. | <a href="#" style="color: #0096d6; text-decoration: none;">Política de privacidad</a> | <a href="#" style="color: #0096d6; text-decoration: none;">Términos de servicio</a></p>
+    </footer>
+</body>
+</html>
